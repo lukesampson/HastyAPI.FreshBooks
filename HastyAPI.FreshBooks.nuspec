@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>HastyFreshBooks</id>
     <version>$version$</version>
     <title>FreshBooks API</title>
     <authors>Luke Sampson</authors>
@@ -14,4 +14,5 @@
     <copyright>Copyright 2012</copyright>
     <tags>web api accounting billing</tags>
   </metadata>
+	<files />
 </package>
