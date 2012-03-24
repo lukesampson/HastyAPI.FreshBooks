@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>FreshBooks API</title>
+    <authors>Luke Sampson</authors>
+    <owners>Luke Sampson</owners>
+    <licenseUrl>https://github.com/lukesampson/HastyAPI.FreshBooks/blob/master/license</licenseUrl>
+    <projectUrl>https://github.com/lukesampson/HastyAPI.FreshBooks</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides low-level, dynamic functions for operating with the FreshBooks API.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2012</copyright>
+    <tags>web api accounting billing</tags>
+  </metadata>
+</package>
