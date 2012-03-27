@@ -7,8 +7,6 @@ using System.Xml.Linq;
 namespace HastyAPI.FreshBooks.Tests {
 	public class ClientTests {
 		public void ListAll() {
-			new FreshBooks("a", "b").Call("client.list");
-
 			var res = Shared.NewCaller().Call("client.list");
 			Console.Write(res.ToString());
 		}
