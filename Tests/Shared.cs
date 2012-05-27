@@ -18,7 +18,7 @@ namespace HastyAPI.FreshBooks {
 
 			if(!File.Exists(cachepath)) {
 				File.WriteAllText(cachepath, "username:token");
-				throw new Exception("Please set auth info in " + path);
+				throw new Exception("Please set auth info in " + cachepath);
 			}
 			var cached = File.ReadAllText(cachepath).Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
 			if(cached.Length != 2) throw new Exception("auth.cache format is invalid, should be username:token");
