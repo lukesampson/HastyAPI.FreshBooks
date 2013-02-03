@@ -31,9 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HastyAPI, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HastyAPI, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\HastyAPI.1.0.7.0\lib\net40\HastyAPI.dll</HintPath>
+      <HintPath>packages\HastyAPI.1.0.8.0\lib\net40\HastyAPI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +48,8 @@
     <Compile Include="FreshBooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\ClientTests.cs" />
+    <Compile Include="Tests\ExpenseTests.cs" />
+    <Compile Include="Tests\InvoiceTests.cs" />
     <Compile Include="Tests\Shared.cs" />
   </ItemGroup>
   <ItemGroup>
