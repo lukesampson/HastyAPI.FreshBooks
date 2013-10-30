@@ -39,6 +39,19 @@ Searching for unpaid invoices from the last month:
 		x.status = "unpaid";
 	});
 
+Example: complex request parameters
+-----------------------------------
+Creating a new invoice item:
+
+	var fb = new FreshBooks("yourusername", "yourapitoken");
+    var res = fb.Call("item.create", x => x.item = new {
+        name = "Fuzzy Slippers",
+        description = "Extra soft",
+        unit_cost = "59.99",
+        quantity = 1,
+        inventory = 10
+    });
+
 Example: inspecting data returned from the API
 ----------------------------------------------
 You can view the data by calling ToString() on the dynamic result:

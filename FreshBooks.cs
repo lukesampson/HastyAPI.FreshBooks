@@ -33,7 +33,7 @@ namespace HastyAPI.FreshBooks {
 			return resp.ToDynamic();
 		}
 
-		private XDocument CreateRequestXML(string method, Action<dynamic> getinputs) {
+		private static XDocument CreateRequestXML(string method, Action<dynamic> getinputs) {
 			var xml = new XDocument();
 
 			var request = new XElement("request");
@@ -45,19 +45,32 @@ namespace HastyAPI.FreshBooks {
 				getinputs(inputs);
 
 				foreach(var p in (inputs as IDictionary<string, object>)) {
-					var name = p.Key;
-					var value = p.Value;
-
-					// special formatting (see http://developers.freshbooks.com/)
-					if(value is DateTime) value = ((DateTime)value).ToString("yyyy-MM-dd hh:mm:ss");
-					else if(value is bool) value = (bool)value ? "1" : "0";
-
-					request.Add(new XElement(name, value));
+					request.Add(XMLElement(p.Key, p.Value));
 				}
 			}
 
 			return xml;
 		}
+
+        private static XElement XMLElement(string name, object value) {
+            if(value == null) return new XElement(name, "");
+
+            // special formatting (see http://developers.freshbooks.com/)
+            if(value is DateTime) value = ((DateTime)value).ToString("yyyy-MM-dd hh:mm:ss");
+            else if(value is bool) value = (bool)value ? "1" : "0";
+
+            if(value.GetType().IsValueType || value is string) {
+                return new XElement(name, value);
+            }
+
+            // complex object
+            foreach(var prop in value.GetType().GetProperties()) {
+                var child = prop.GetValue(value, null);
+                return new XElement(name, XMLElement(prop.Name, child));
+            }
+
+            return new XElement(name, value);
+        }
 
 	}
 }
