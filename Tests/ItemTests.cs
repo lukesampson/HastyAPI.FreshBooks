@@ -9,8 +9,7 @@ namespace HastyAPI.FreshBooks.Tests {
     public class ItemTests {
 
         public void CreateItem() {
-            var fb = Shared.NewCaller();
-            var res = fb.Call("item.create", x => x.item = new {
+            var res = FreshBooks.CreateRequestXML("item.create", x => x.item = new {
                 name = "Fuzzy Slippers",
                 description = "Extra soft",
                 unit_cost = "59.99",

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using System.Dynamic;
+using System.Diagnostics;
 
 namespace HastyAPI.FreshBooks {
 	public class FreshBooks {
@@ -33,7 +34,7 @@ namespace HastyAPI.FreshBooks {
 			return resp.ToDynamic();
 		}
 
-		private static XDocument CreateRequestXML(string method, Action<dynamic> getinputs) {
+		public static XDocument CreateRequestXML(string method, Action<dynamic> getinputs) {
 			var xml = new XDocument();
 
 			var request = new XElement("request");
@@ -45,7 +46,7 @@ namespace HastyAPI.FreshBooks {
 				getinputs(inputs);
 
 				foreach(var p in (inputs as IDictionary<string, object>)) {
-					request.Add(XMLElement(p.Key, p.Value));
+					request.Add(XMLElement(p.Key, p.Value.ToDictionary()));
 				}
 			}
 
@@ -64,12 +65,11 @@ namespace HastyAPI.FreshBooks {
             }
 
             // complex object
-            foreach(var prop in value.GetType().GetProperties()) {
-                var child = prop.GetValue(value, null);
-                return new XElement(name, XMLElement(prop.Name, child));
+            var el = new XElement(name);
+            foreach(var prop in value.ToDictionary()) {
+                el.Add(XMLElement(prop.Key, prop.Value));
             }
-
-            return new XElement(name, value);
+            return el;
         }
 
 	}

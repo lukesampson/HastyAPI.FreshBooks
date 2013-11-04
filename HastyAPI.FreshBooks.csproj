@@ -56,6 +56,7 @@
     <Compile Include="Tests\InvoiceTests.cs" />
     <Compile Include="Tests\ItemTests.cs" />
     <Compile Include="Tests\Shared.cs" />
+    <Compile Include="Tests\TimeEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HastyAPI.FreshBooks.nuspec">
