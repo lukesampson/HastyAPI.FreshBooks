@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using System.Dynamic;
-using System.Diagnostics;
 
 namespace HastyAPI.FreshBooks {
 	public class FreshBooks {
@@ -46,7 +45,7 @@ namespace HastyAPI.FreshBooks {
 				getinputs(inputs);
 
 				foreach(var p in (inputs as IDictionary<string, object>)) {
-					request.Add(XMLElement(p.Key, p.Value.ToDictionary()));
+					request.Add(XMLElement(p.Key, p.Value));
 				}
 			}
 
